@@ -31,10 +31,59 @@
  *********************************************************************************************************************/
 typedef enum
 {
+    /* Exception vectors from 0 to 15 */
+    RESET_HANDLER          = 1,          
+    NMI_HANDLER            = 2,                
+    HARD_FAULT_HANDLER     = 3,         
+    MEM_MANG_HANDLER      = 4,     
+    BUS_FAULT_HANDLER      = 5,          
+    USAGE_FAULT_HANDLER    = 6,
+    SVCALL_HANDLER         = 11,
+    DEBUG_MONITOR_HANDLER  = 12,
+    PENDSV_HANDLER         = 14,
+    SYSTICK_HANDLER        = 15
 
- /* All interrupt 0 ... 128 */
+}IntCtrl_ExceptionType;
+
+
+typedef enum
+{
+    /* Interrupt numbers from 0 ... 138 */
+    GPIO_PORTA_IRQ,
+    GPIO_PORTB_IRQ,
+    GPIO_PORTC_IRQ,
+    GPIO_PORTD_IRQ,
+
+    /* TODO continue typedef until IRQ no.138 */
+
 
 }IntCtrl_InterruptType;
+
+typedef struct
+{
+    uint8 exception;
+    uint8 state;
+    uint8 groupPri;
+    uint8 subgroupPri;
+
+}IntCtrl_FaultExceptionConfigType;
+
+typedef struct
+{
+    uint8 exception;
+    uint8 state;
+    uint8 groupPri;
+    uint8 subgroupPri;
+
+}IntCtrl_SystemExceptionConfigType;
+
+typedef struct
+{
+    uint8 irq;
+    uint8 state;
+    uint8 groupPri;
+    uint8 subgroupPri;
+}IntCtrl_InterruptConfigType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -49,5 +98,5 @@ typedef enum
 #endif  /* INTCTRL_TYPES_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: IntCtrl_Types.h
  *********************************************************************************************************************/

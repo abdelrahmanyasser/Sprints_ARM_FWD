@@ -20,13 +20,23 @@
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 #define CORTEXM4_PERI_BASE_ADDRESS              0xE000E000
+
+/* NVIC registers */
+
+/* SCB registers */
 #define APINT_REG                               (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD0C)))
 #define INTCTRL_REG                             (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD04)))
+
+#define SYSPRI1_REG                             (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD18)))
+#define SYSPRI2_REG                             (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD1C)))
+#define SYSPRI3_REG                             (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD20)))
+#define SYSHNDCTRL_REG                          (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD24)))
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
-
+#define SET_BIT(reg, bit)                       (reg |= (1 << bit))
+#define CLEAR_BIT(reg, bit)                     (reg &= ~(1 << bit))
 
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
@@ -46,5 +56,5 @@
 #endif  /* MCU_HW_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: Mcu_Hw.h
  *********************************************************************************************************************/
