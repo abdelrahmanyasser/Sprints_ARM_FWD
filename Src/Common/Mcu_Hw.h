@@ -2,28 +2,26 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  IntCtrl.h
- *       Module:  NVIC driver
+ *         File:  Mcu_Hw.h
+ *       Module:  Mcu Hw
  *
- *  Description:  Interfacing file for NVIC driver for TM4C123GH6PM
+ *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
+#ifndef MCU_HW_H
+#define MCU_HW_H
 
 /**********************************************************************************************************************
- *  INCLUDES
+ * INCLUDES
  *********************************************************************************************************************/
-//#include "IntCtrl_Cfg.h"
-#include "IntCtrl_Types.h"
+#include "Std_Types.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define APINT_VECTKEY                            0x05FA0000
-#define APINT_XXX_PRIGROUP_MASK                  0X00000000
-#define APINT_XXY_PRIGROUP_MASK                  0X00000500
-#define APINT_XYY_PRIGROUP_MASK                  0X00000600
-#define APINT_YYY_PRIGROUP_MASK                  0X00000700
-
+#define CORTEXM4_PERI_BASE_ADDRESS              0xE000E000
+#define APINT_REG                               (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD0C)))
+#define INTCTRL_REG                             (*((volatile uint32*)(CORTEXM4_PERI_BASE_ADDRESS + 0xD04)))
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -44,6 +42,9 @@
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 
+ 
+#endif  /* MCU_HW_H */
+
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl.h
+ *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
