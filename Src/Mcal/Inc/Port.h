@@ -2,26 +2,24 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  Std_Types.h
- *       Module:  Std Types
+ *         File:  Port.h
+ *       Module:  GPIO module
  *
- *  Description:  Standard fixed length data types
+ *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef STD_TYPES_H
-#define STD_TYPES_H
+#ifndef <PORT_H>
+#define <PORT_H>
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-
+#include "Std_Types.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#ifndef NULL
-   #define NULL ((void*)0)
-#endif
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -31,16 +29,48 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-typedef unsigned char       boolean;
-typedef unsigned char       uint8;                /* 0 to 255 */
-typedef char                sint8;                /* -128 to +127 */
-typedef unsigned short      uint16;               /* 0 to 65535 */
-typedef short               sint16;               /* -32,768 to +32767 */
-typedef unsigned long       uint32;               /* 0 to +4,294,967,295 */
-typedef long                sint32;               /* -2,147,483,648 to +2,147,483,647 */
-typedef float               float32;              /* 3.4E-38 to 3.4E+38 */
-typedef double              float64;              /* 1.7E-308 to 1.7E+308 */
+typedef uint8 Port_PinType;           /* Pin range 0 .. 7 */
 
+typedef enum
+{
+    PORT_PIN_IN,                      /* Pin input type */
+    PORT_PIN_OUT                      /* Pin output type */
+}Port_PinDirectionType;
+
+typedef enum
+{
+    /* TODO: Table of Alternative functions for gpio pins */
+
+}Port_PinModeType;
+
+typedef enum
+{
+    PORT_PIN_LOW,                     /* Pin level low */
+    PORT_PIN_HIGH                     /* Pin level high */
+}Port_PinLevelType;
+
+typedef enum
+{
+    PORT_PIN_PULL_OFF,                /* Pin internal pull resistors off */
+    PORT_PIN_PULL_UP,                 /* Pin internal pull up resistor */
+    PORT_PIN_PULL_DOWN                /* Pin internal pull down resistor */
+}Port_PinInternalAttachType;
+
+typedef enum
+{
+    PORT_2MA,                         /* Pin current 2mA */
+    PORT_4MA,                         /* Pin current 4mA */
+    PORT_8MA                          /* Pin current 8mA */
+}Port_PinOutputCurrentType;
+
+typedef struct
+{
+    Port_PinModeType PortPinMode;
+    Port_PinLevelType PortPinLevelValue;
+    Port_PinDirectionType PortPinDirection;
+    Port_PinInternalAttachType PortPinInternalAttach;
+    Port_PinOutputCurrentType PortPinOutputCurrent;
+}Port_ConfigType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
@@ -50,10 +80,10 @@ typedef double              float64;              /* 1.7E-308 to 1.7E+308 */
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-
+void Port_Init( const Port_ConfigType* ConfigPtr );
  
-#endif  /* STD_TYPES_H */
+#endif  /* PORT_H */
 
 /**********************************************************************************************************************
- *  END OF FILE: Std_Types.h
+ *  END OF FILE: Port.h
  *********************************************************************************************************************/
