@@ -1,7 +1,7 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  Port_Lcfg.c
+/**        \file  Gpt_Lcfg.c
  *        \brief  
  *
  *      \details  
@@ -12,43 +12,28 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "Port.h"
+#include "Gpt.h"
 
 
 /**********************************************************************************************************************
  *  GLOBAL DATA
  *********************************************************************************************************************/
-Port_ConfigType Port_ConfigSet[PORT_NUM_OF_CONFIG_PINS] = {
+
+Gpt_ConfigType Gpt_ConfigSet[GPT_NUM_OF_CONFIG_CHANNELS] = \
+{
 	{
-	.PortID = PORT_F,
-	.PinID  = 1,
-	.PinMode = DIO,
-	.PinLevelValue = PORT_PIN_LOW,
-	.PinDirection  = PORT_PIN_OUT,
-	.PinInternalAttach = PORT_PIN_PULL_OFF,
-	.PinOutputCurrent  = PORT_4MA
-	},\
-	{
-	.PortID = PORT_F,
-	.PinID  = 2,
-	.PinMode = DIO,
-	.PinLevelValue = PORT_PIN_LOW,
-	.PinDirection  = PORT_PIN_OUT,
-	.PinInternalAttach = PORT_PIN_PULL_OFF,
-	.PinOutputCurrent  = PORT_4MA
-	},\
-	{
-	.PortID = PORT_F,
-	.PinID  = 3,
-	.PinMode = DIO,
-	.PinLevelValue = PORT_PIN_LOW,
-	.PinDirection  = PORT_PIN_OUT,
-	.PinInternalAttach = PORT_PIN_PULL_OFF,
-	.PinOutputCurrent  = PORT_4MA
+		.GptChannelId = TIMER0,
+		.GptChannelTickFrequency = 1000000,
+		.GptChannelMode = GPT_CH_MODE_CONTINUOUS,
+	},
+		{
+		.GptChannelId = WTIMER0,
+		.GptChannelTickFrequency = 1000,
+		.GptChannelMode = GPT_CH_MODE_CONTINUOUS,
 	}
-};	
-		
-		
+};
+
+
 /**********************************************************************************************************************
- *  END OF FILE: Port_Lcfg.c
+ *  END OF FILE: FileName.c
  *********************************************************************************************************************/

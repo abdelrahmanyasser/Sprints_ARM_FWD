@@ -35,7 +35,7 @@ typedef enum
     RESET_HANDLER          = 1,          
     NMI_HANDLER            = 2,                
     HARD_FAULT_HANDLER     = 3,         
-    MEM_MANG_HANDLER      = 4,     
+    MEM_FAULT_HANDLER      = 4,     
     BUS_FAULT_HANDLER      = 5,          
     USAGE_FAULT_HANDLER    = 6,
     SVCALL_HANDLER         = 11,
